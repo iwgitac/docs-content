@@ -48,6 +48,14 @@ After you build the circuit plug your board into your computer, start the Arduin
 
 The code below uses the [millis()](https://www.arduino.cc/reference/en/language/functions/time/millis/) function, a command that returns the number of milliseconds since the board started running its current sketch, to blink an LED.
 
+Note that the millis() function rolls-over back to zero every 50 days so if you are planning a long running sketch (such as for an IoT device) you should check for roll-over before subtracting your saved millis value from the current millis.
+eg.
+
+ // deal with looparound
+  if (millis() < LastTime ) {
+    LastTime = 0;
+  }
+
 <iframe src='https://create.arduino.cc/example/builtin/02.Digital%5CBlinkWithoutDelay/BlinkWithoutDelay/preview?embed&snippet' style='height:510px;width:100%;margin:10px 0' frameborder='0'></iframe>
 
 ### Learn more
